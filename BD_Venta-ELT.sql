@@ -18,6 +18,20 @@ CREATE TABLE Status (
     StatusName varchar(50) NOT NULL
 );
 
+-- Tabla Pais
+CREATE TABLE Country (
+    CountryID int IDENTITY(1,1) PRIMARY KEY,
+    CountryName varchar(100) NOT NULL UNIQUE
+);
+
+-- Tabla Ciudad
+CREATE TABLE City (
+    CityID int IDENTITY(1,1) PRIMARY KEY,
+    CityName varchar(100) NOT NULL,
+    CountryID int,
+    FOREIGN KEY (CountryID) REFERENCES Country(CountryID)
+);
+
 -- Tabla Clientes
 CREATE TABLE Customer (
     CustomerID int PRIMARY KEY,
@@ -25,8 +39,8 @@ CREATE TABLE Customer (
     LastName varchar(100) NOT NULL,
     Email varchar(100),
     Phone varchar(20),
-    City varchar(50),
-    Country varchar(50)
+    CityID int, 
+    FOREIGN KEY (CityID) REFERENCES City(CityID)
 );
 
 -- Tabla Productos
@@ -60,3 +74,5 @@ CREATE TABLE Order_Detail (
     FOREIGN KEY (OrderID) REFERENCES [Order](OrderID),
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
 );
+
+
