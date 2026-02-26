@@ -1,0 +1,14 @@
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\bin\Debug\net10.0\Sistema de Análisis de Ventas ETL.exe
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\bin\Debug\net10.0\Sistema de Análisis de Ventas ETL.deps.json
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\bin\Debug\net10.0\Sistema de Análisis de Ventas ETL.runtimeconfig.json
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\bin\Debug\net10.0\Sistema de Análisis de Ventas ETL.dll
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\bin\Debug\net10.0\Sistema de Análisis de Ventas ETL.pdb
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.AssemblyInfoInputs.cache
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.AssemblyInfo.cs
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.csproj.CoreCompileInputs.cache
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.dll
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\refint\Sistema de Análisis de Ventas ETL.dll
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.pdb
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\Sistema de Análisis de Ventas ETL.genruntimeconfig.cache
+D:\Mineria de Datos\Visual Studio 2026\Practica2XLStoSQL\CargaDeInventario\Sistema de Análisis de Ventas ETL\obj\Debug\net10.0\ref\Sistema de Análisis de Ventas ETL.dll

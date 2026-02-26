@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Sistema de Análisis de Ventas ETL/1.0.0": {
+        "runtime": {
+          "Sistema de Análisis de Ventas ETL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Sistema de Análisis de Ventas ETL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
