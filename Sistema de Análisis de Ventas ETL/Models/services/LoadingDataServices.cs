@@ -1,8 +1,8 @@
 ﻿using CsvHelper;
-using Sistema_de_Análisis_de_Ventas_ETL.Models.Csv;
+using Sistema_de_Analisis_de_Ventas_ETL.Models.Csv;
 using System.Globalization;
 
-namespace Sistema_de_Análisis_de_Ventas_ETL.Models.services
+namespace Sistema_de_Analisis_de_Ventas_ETL.Models.services
 {
     public class LoadingDataServices
     {
@@ -45,7 +45,7 @@ namespace Sistema_de_Análisis_de_Ventas_ETL.Models.services
                     else
                     {
                         // Extraer el CsvUnicos
-                        var clientesUnicos = customersData.DistinctBy(c => c.Email).ToList();
+                        var clientesUnicos = customersData.DistinctBy(c => c.CustomerID).ToList();
 
                         // Insertar los Csv nuevos
                         foreach (var customer in clientesUnicos)
@@ -76,7 +76,9 @@ namespace Sistema_de_Análisis_de_Ventas_ETL.Models.services
                                     FirstName = customer.FirstName,
                                     LastName = customer.LastName,
                                     Email = customer.Email,
-                                    Phone = customer.Phone,
+                                    Phone = !string.IsNullOrEmpty(customer.Phone) && customer.Phone.Trim().Length > 20
+                                                                                    ? customer.Phone.Trim().Substring(0, 20)
+                                                                                    : customer.Phone?.Trim(),
                                     CityId = existeCity.CityId
                                 };
 
@@ -128,7 +130,9 @@ namespace Sistema_de_Análisis_de_Ventas_ETL.Models.services
                                 {
                                     ProductId = prod.ProductID,
                                     ProductName = prod.ProductName,
-                                    CategoryId = existeCat.CategoryId
+                                    CategoryId = existeCat.CategoryId,
+                                    Price = prod.Price,
+                                    Stock = prod.Stock
                                 };
 
                                 context.Products.Add(nuevoProducto);
@@ -169,6 +173,16 @@ namespace Sistema_de_Análisis_de_Ventas_ETL.Models.services
 
                             if (existeOrden == null)
                             {
+                                // Buscar si el cliente de esta orden realmente existe en nuestra BD
+                                var clienteExiste = context.Customers.Any(c => c.CustomerId == order.CustomerID);
+
+                                if (!clienteExiste)
+                                {
+                                    // Si el cliente no existe, imprimimos una advertencia y saltamos a la siguiente orden
+                                    Console.WriteLine($"Advertencia: Orden {order.OrderID} ignorada. El cliente {order.CustomerID} no existe.");
+                                    continue;
+                                }
+
                                 // Estado del pedido
                                 var existeStatus = context.Statuses.FirstOrDefault(s => s.StatusName == order.Status);
                                 if (existeStatus == null)
@@ -229,7 +243,8 @@ namespace Sistema_de_Análisis_de_Ventas_ETL.Models.services
                                     OrderId = detail.OrderID,
                                     ProductId = detail.ProductID,
                                     Quantity = detail.Quantity,
-                                    UnitPrice = detail.TotalPrice
+                                    TotalPrice = detail.TotalPrice,
+                                    UnitPrice = detail.Quantity > 0 ? (detail.TotalPrice / detail.Quantity) : 0
                                 };
 
                                 context.OrderDetails.Add(nuevoDetalle);

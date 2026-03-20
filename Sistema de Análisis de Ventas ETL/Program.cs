@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Sistema_de_Análisis_de_Ventas_ETL.Models;
-using Sistema_de_Análisis_de_Ventas_ETL.Models.services;
+using Sistema_de_Analisis_de_Ventas_ETL.Models;
+using Sistema_de_Analisis_de_Ventas_ETL.Models.services;
 
 Console.WriteLine("=== Iniciando Sistema de Análisis de Ventas ETL ===");
 
@@ -11,6 +11,7 @@ var optionsBuilder = new DbContextOptionsBuilder<DB_Ventas_ETLContext>();
 optionsBuilder.UseSqlServer("Server=(localdb)\\ProjectModels;Database=DB_Ventas_ETL;Trusted_Connection=True;TrustServerCertificate=True;");
 
 try
+
 {
     using (var dbContext = new DB_Ventas_ETLContext(optionsBuilder.Options))
     {
@@ -22,6 +23,11 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"Ocurrió un error crítico en la ejecución: {ex.Message}");
+
+    if (ex.InnerException != null)
+    {
+        Console.WriteLine($"---> DETALLE DEL ERROR (InnerException): {ex.InnerException.Message}");
+    }
 }
 
 Console.WriteLine("=== Proceso finalizado. Presiona ENTER para salir ===");

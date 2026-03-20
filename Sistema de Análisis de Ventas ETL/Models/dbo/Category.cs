@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sistema_de_Análisis_de_Ventas_ETL.Models;
+namespace Sistema_de_Analisis_de_Ventas_ETL.Models;
 
 public partial class Category
 {

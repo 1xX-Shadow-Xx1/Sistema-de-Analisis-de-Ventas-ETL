@@ -1727,11 +1727,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kevin\\Documents\\Repository-GitHub\\Sistema de Análisis de Ventas ETL\\Sistema de Análisis de Ventas ETL\\ConsoleETLapp.csproj",
+      "projectUniqueName": "C:\\Users\\kevin\\Documents\\Repository-GitHub\\Sistema-de-Analisis-de-Ventas-ETL\\Sistema de Análisis de Ventas ETL\\ConsoleETLapp.csproj",
       "projectName": "ConsoleETLapp",
-      "projectPath": "C:\\Users\\kevin\\Documents\\Repository-GitHub\\Sistema de Análisis de Ventas ETL\\Sistema de Análisis de Ventas ETL\\ConsoleETLapp.csproj",
+      "projectPath": "C:\\Users\\kevin\\Documents\\Repository-GitHub\\Sistema-de-Analisis-de-Ventas-ETL\\Sistema de Análisis de Ventas ETL\\ConsoleETLapp.csproj",
       "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kevin\\Documents\\Repository-GitHub\\Sistema de Análisis de Ventas ETL\\Sistema de Análisis de Ventas ETL\\obj\\",
+      "outputPath": "C:\\Users\\kevin\\Documents\\Repository-GitHub\\Sistema-de-Analisis-de-Ventas-ETL\\Sistema de Análisis de Ventas ETL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

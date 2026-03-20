@@ -1,5 +1,5 @@
 ﻿
-namespace Sistema_de_Análisis_de_Ventas_ETL.Models.Csv
+namespace Sistema_de_Analisis_de_Ventas_ETL.Models.Csv
 {
     public class OrderDetailCsvMap
     {
