@@ -212,7 +212,7 @@ namespace Sistema_de_Analisis_de_Ventas_ETL.Models.services
             }
 
             // ARCHIVO ORDER DETAILS
-            string rutaOrderDetails = Path.Combine(pathFile, "orderdetails.csv");
+            string rutaOrderDetails = Path.Combine(pathFile, "order_details.csv");
 
             if (File.Exists(rutaOrderDetails) == false)
             {
@@ -231,9 +231,26 @@ namespace Sistema_de_Analisis_de_Ventas_ETL.Models.services
                     }
                     else
                     {
+                        Console.WriteLine("Leyendo IDs válidos en memoria...");
+
+                        // ---> OPTIMIZACIÓN ETL: Cargar todo a la RAM en colecciones ultra rápidas (HashSet)
+                        var ordenesValidas = context.Orders.Select(o => o.OrderId).ToHashSet();
+                        var productosValidos = context.Products.Select(p => p.ProductId).ToHashSet();
+
+                        // Lista para guardar masivamente al final
+                        var nuevosDetalles = new List<OrderDetail>();
+
+                        Console.WriteLine("Procesando y filtrando registros...");
 
                         foreach (var detail in detailsData)
                         {
+                            // 1. Validar primero si la Orden existe 
+                            if (!ordenesValidas.Contains(detail.OrderID)) continue;
+
+                            // 2. Validar si el Producto existe
+                            if (!productosValidos.Contains(detail.ProductID)) continue;
+
+                            // 3. Validar si el detalle ya fue insertado previamente
                             var existeDetalle = context.OrderDetails.FirstOrDefault(od => od.OrderId == detail.OrderID && od.ProductId == detail.ProductID);
 
                             if (existeDetalle == null)
@@ -244,11 +261,27 @@ namespace Sistema_de_Analisis_de_Ventas_ETL.Models.services
                                     ProductId = detail.ProductID,
                                     Quantity = detail.Quantity,
                                     TotalPrice = detail.TotalPrice,
+
                                     UnitPrice = detail.Quantity > 0 ? (detail.TotalPrice / detail.Quantity) : 0
                                 };
 
-                                context.OrderDetails.Add(nuevoDetalle);
-                                context.SaveChanges(); 
+                                nuevosDetalles.Add(nuevoDetalle);
+
+                                Console.WriteLine($"Se encontraron {nuevosDetalles.Count} detalles válidos. Guardando en la base de datos...");
+
+                                var llavesExistentes = context.OrderDetails
+                                                        .Select(od => new { od.OrderId, od.ProductId })
+                                                        .ToHashSet();
+
+                                var detallesAInsertar = nuevosDetalles
+                                                        .Where(nd => !llavesExistentes.Contains(new { OrderId = nd.OrderId, ProductId = nd.ProductId }))
+                                                        .ToList();
+
+                                if (detallesAInsertar.Any())
+                                {
+                                    context.OrderDetails.AddRange(detallesAInsertar);
+                                    context.SaveChanges(); 
+                                }
                             }
                         }
                         Console.WriteLine("Carga de detalles de órdenes terminada exitosamente.");
